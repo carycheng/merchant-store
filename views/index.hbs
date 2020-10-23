@@ -1,2 +1,190 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <title>Merchant App</title>
+      <!-- Bootstrap core CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <!-- Playfair Font and Lato -->
+      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&family=Spectral:wght@300&display=swap" rel="stylesheet">
+      <!-- Custom styles for this template -->
+      <link href="/stylesheets/front-page.css" rel="stylesheet">
+      <script src="https://js.stripe.com/v3/"></script>
+   </head>
+   <body>
+      <nav class="site-header sticky-top py-1 spectral-font-family">
+         <div class="container d-flex flex-column flex-md-row justify-content-between">
+            <a class="py-2" href="#">
+            <img src="/images/company-icon.png" class="icon-size">
+            </a>
+            <a class="py-2 d-none d-md-inline-block" href="#">Tour</a>
+            <a class="py-2 d-none d-md-inline-block" href="#">Product</a>
+            <a class="py-2 d-none d-md-inline-block" href="#">Features</a>
+            <a class="py-2 d-none d-md-inline-block" href="#">Enterprise</a>
+            <a class="py-2 d-none d-md-inline-block" href="#">Support</a>
+            <a class="py-2 d-none d-md-inline-block" href="#">Pricing</a>
+            <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>
+         </div>
+      </nav>
+      <div>
+      {{#if message}}
+      <div class="alert alert-danger flash-message-positioning" role="alert">
+         {{message}}
+      </div>
+      {{/if}}
+      <img src="/images/succulent3.jpg" class="banner-img-cover">
+      <div class="top-banner-slogan playfair-font-family" >Have a big idea?</div>
+      <div class="bottom-banner-slogan playfair-font-family" >We can help grow your business</div>
+      <!-- Button trigger modal -->
+      <div class="register-button-placement poppins-font-family">
+         <button type="button" class="btn btn-primary register-button-style rounded-corners" data-toggle="modal" data-target="#exampleModalLong">
+         Check us Out!
+         </button>
+      </div>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+               </div>
+               <div class="modal-body">
+                  <div class="open-sans-font-family">
+                     <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                           <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Sign In</a>
+                           <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Sign Up</a>
+                        </div>
+                     </nav>
+                     <div class="tab-content form-top-padding" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                           <small class="form-text text-muted welcome-message-style">Welcome Back!</small>
+                           <form action="/auth/login", method="POST">
+                              <div class="form-group">
+                                 <label class="tab-message-helper login-input-text-color" for="signInEmail">Email Address</label>
+                                 <input type="email" class="form-control rounded-corners" name="email" id="signInEmail" aria-describedby="emailHelp" placeholder="enter email">
+                              </div>
+                              <div class="form-group">
+                                 <label class="tab-message-helper login-input-text-color" for="signInPassword">Password</label>
+                                 <input type="password" class="form-control rounded-corners" name="password" id="signInPassword" placeholder="enter password">
+                              </div>
+                              <button type="submit" class="btn btn-primary btn-med btn-block rounded-corners">Sign In</button>
+                           </form>
+                        </div>
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                           <small class="form-text text-muted welcome-message-style">New around here? Why not sign up!</small>
+                           <form action="/auth/register", method="POST", id="payment-form">
+                           <label class="mts" for="card-element">Enter Credit Card Information</label>
+                           <div class="form-group">
+                              <input type="email" class="form-control rounded-corners" name="email" id="signUpEmail" aria-describedby="emailHelp" placeholder="enter email">
+                              <small id="emailHelp" class="form-text text-muted email-warning-message">We'll never share your email with anyone else.</small>
+                           </div>
+                           <div class="form-group">
+                              <input type="password" class="form-control rounded-corners" name="password" id="signUpPassword" placeholder="enter password">
+                           </div>
+                           <div class="form-group">
+                              <input type="tel" class="form-control rounded-corners" name="telephone" id="signUpPhone" placeholder="enter phone number">
+                           </div>
+                           <label for="card-element">
+                           Credit or debit card
+                           </label>
+                           <div id="card-element">
+                              <!-- A Stripe Element will be inserted here. -->
+                           </div>
+                           <div id="card-errors" role="alert"></div>
+                           <div class="register-new-user-button-placement">
+                              <button type="button" class="btn btn-primary btn-med btn-block rounded-corners" id="register">Register</button>
+                           </div>
+                           </form>
+                        </div>
+                        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      {{!-- User footer partial --}}
+      {{> footer}}
+      <!-- Bootstrap core JavaScript
+         ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>     
+      <script>
+         // Create a Stripe client, instance of Elements, instance of Card Element
+         var stripe = Stripe('pk_test_51HWYoNDvsNvNskCcrYjwHAaEyPN1UH37DmFonkKeFZky75EcFcKPtqkb3nGXwpAMdJaNzce5iwKozneRMa1caicU00dQtbO1T5');
+         
+         // Custom styling can be passed to options when creating an Element.
+         // (Note that this demo uses a wider set of styles than the guide below.)
+         var style = {
+         base: {
+            color: '#32325d',
+            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+            fontSmoothing: 'antialiased',
+            fontSize: '16px',
+            '::placeholder': {
+               color: '#aab7c4'
+            }
+         },
+         invalid: {
+            color: '#fa755a',
+            iconColor: '#fa755a'
+         }
+         };
+         const elements = stripe.elements();
+         const card = elements.create('card', {style: style});
+         card.mount('#card-element');
+         
+         // Handle real-time validation errors from the card Element.
+         card.on('change', function(event) {
+            var displayError = document.getElementById('card-errors');
+            if (event.error) {
+               displayError.textContent = event.error.message;
+            } else {
+               displayError.textContent = '';
+            }
+         });
+         
+         // Handle form submission.
+         var form = document.getElementById('payment-form');
+         form.addEventListener('click', function(event) {
+            event.preventDefault();
+         
+            stripe.createToken(card).then(function(result) {
+               if (result.error) {
+                  // Inform the user if there was an error.
+                  var errorElement = document.getElementById('card-errors');
+                  errorElement.textContent = result.error.message;
+               } else {
+                     console.log(result);
+                  // Send the token to your server.
+                  stripeTokenHandler(result.token);
+               }
+            });
+         });
+         
+         // Submit the form with the token ID.
+         function stripeTokenHandler(token) {
+            // Insert the token ID into the form so it gets submitted to the server
+            var form = document.getElementById('payment-form');
+            var hiddenInput = document.createElement('input');
+            hiddenInput.setAttribute('type', 'hidden');
+            hiddenInput.setAttribute('name', 'stripeToken');
+            hiddenInput.setAttribute('value', token.id);
+            form.appendChild(hiddenInput);
+         
+            // Submit the form
+            form.submit();
+         }  
+      </script>
+   </body>
+</html>

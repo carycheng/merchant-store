@@ -1,0 +1,200 @@
+.container {
+	max-width: 960px;
+}
+
+/*
+* Custom translucent site header
+*/
+
+.site-header {
+	background-color: rgba(255, 247, 250, 1);
+	-webkit-backdrop-filter: saturate(180%) blur(20px);
+	backdrop-filter: saturate(180%) blur(20px);
+	opacity: 0.7;
+}
+
+.site-header a {
+	color: #555;
+	font-size: 16px;
+	transition: ease-in-out color .15s;
+}
+
+.site-header a:hover {
+	color: #fff;
+	text-decoration: none;
+}
+
+
+/* css style for large banner image */
+
+.banner-img-cover {
+	width: 100%;
+	height: 700px;
+}
+
+.icon-size {
+	width: 30px;
+	height: 30px;
+}
+
+
+/* Top Slogan */
+
+.top-banner-slogan {
+	position: absolute;
+	top: 30%;
+	left: 27%;
+	transform: translate(-50%, -50%);
+	font-size: 3.5em;
+}
+
+
+/* Bottom Slogan */
+
+.bottom-banner-slogan {
+	position: absolute;
+	top: 40%;
+	left: 37%;
+	transform: translate(-50%, -50%);
+	font-size: 2.5em;
+}
+
+.flash-message-positioning {
+	left: 50%;
+	transform: translateX(-50%);
+	position: absolute;
+}
+
+
+/* This is the placement for the login and sign up modal button */
+
+.register-button-placement {
+	position: absolute;
+	top: 30%;
+	right: 21%;
+}
+
+.register-new-user-button-placement {
+	padding-top: 20px;
+}
+
+.register-button-style {
+	background-color: #f88379;
+	border-color: #f88379;
+}
+
+
+/* This is styling to rounder corners for text box */
+
+.rounded-corners {
+	border-radius: 25px;
+}
+
+
+/* This style controls the font size and padding for messages within the sign in and sign up box */
+
+.tab-message-helper {
+	font-size: 15px;
+	padding-left: 10px;
+}
+
+
+/* This class sets the input prompt for password and email to gray */
+
+.login-input-text-color {
+	color: #a0b0bf
+}
+
+.form-top-padding {
+	padding-top: 10px;
+}
+
+
+/* This class is in charge of style and alignment for the two messages displayed at the top for sign in and sign up */
+
+.welcome-message-style {
+	text-align: center;
+	font-size: 16px;
+	padding-bottom: 10px;
+}
+
+
+/* This style sets the width of the sign in/ sign up box so it's not controlled by the widest element */
+
+.login-box-width {
+	width: 300px;
+}
+
+.email-warning-message {
+	padding-left: 10px;
+}
+
+
+/* Playfair Font Family */
+
+.playfair-font-family {
+	font-family: 'Playfair Display', serif;
+}
+
+
+/* Poppins Font Family */
+
+.poppins-font-family {
+	font-family: 'Poppins', sans-serif;
+}
+
+
+/* Lora Font Family */
+
+.lora-font-family {
+	font-family: 'Lora', serif;
+}
+
+
+/* Source Sans Pro Font Family */
+
+.open-sans-font-family {
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+
+/* Spectal Font Family*/
+
+.spectral-font-family {
+	font-family: 'Spectral', serif;
+}
+
+
+/*
+* Extra utilities
+*/
+
+.border-top {
+	border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+	box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+.flex-equal>* {
+	-ms-flex: 1;
+	-webkit-box-flex: 1;
+	flex: 1;
+}
+
+@media (min-width: 768px) {
+	.flex-md-equal>* {
+		-ms-flex: 1;
+		-webkit-box-flex: 1;
+		flex: 1;
+	}
+}
+
+.overflow-hidden {
+	overflow: hidden;
+}
