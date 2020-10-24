@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <link rel="icon" href="../../../../favicon.ico">
+      <title>Thank you for your purchase!</title>
+      <!-- Bootstrap core CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300&display=swap" rel="stylesheet">
+      <!-- Spectal Font Family -->
+      <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@300&display=swap" rel="stylesheet">
+      <!-- Custom styles for this template -->
+      <script src="https://js.stripe.com/v3/"></script>
+      <link href="/stylesheets/dashboard.css" rel="stylesheet">
+   </head>
+   <body>
+      <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+         <a class="icon-padding" href="#">
+         <img src="/images/company-icon.png" class="icon-size">
+         </a>
+         <nav class="top-nav-bar-position spectral-font-family">
+            <a class="p-2 text-dark" href="#">Features</a>
+            <a class="p-2 text-dark" href="#">Enterprise</a>
+            <a class="p-2 text-dark" href="#">Support</a>
+            <a class="p-2 text-dark" href="#">Pricing</a>
+         </nav>
+      </div>
+      <h1 class="centered-text playfair-font-family thank-you-message-placement">Thank you for shopping with us!</h1>
+      <p class="centered-text spectral-font-family">Your total amount came out to: ${{totalPrice}} and your charge id is: {{chargeId}}</p>
+      </br>
+      <p class="centered-text spectral-font-family">Please click the icon below to view your receipt, a copy should also have been sent to you!</p>
+      <a href="{{receiptUrl}}">
+      <input type="image" class="receipt-icon-style"  src="/images/receipt-icon.png" />
+      </a>
+      <div class="footer-spacing spectral-font-family">
+         {{!-- user footer partial --}}
+         {{> footer}}
+      </div>
+   </body>
+</html>
