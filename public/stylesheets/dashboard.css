@@ -1,0 +1,123 @@
+/**
+ * The CSS shown here will not be introduced in the Quickstart guide, but shows
+ * how you can use CSS to style your Element's container.
+ */
+
+ .StripeElement {
+	box-sizing: border-box;
+	height: 40px;
+	padding: 10px 12px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	background-color: white;
+	box-shadow: 0 1px 3px 0 #e6ebf1;
+	-webkit-transition: box-shadow 150ms ease;
+	transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus {
+	box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+	border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+	background-color: #fefde5 !important;
+}
+
+.dashboard-banner-img {
+	width: 65%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.text-box {
+	position: absolute;
+	height: 80%;
+	text-align: center;
+	width: 100%;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	font-size: 40px;
+}
+
+.centered-text {
+	text-align: center;
+}
+
+.dashboard-banner-box {
+	position: relative;
+	display: inline-block;
+	color: white;
+	margin-top: 1%;
+	margin-bottom: 2%;
+}
+
+.icon-size {
+	width: 40px;
+	height: 40px;
+}
+
+.icon-padding {
+	padding-left: 5%;
+}
+
+.shopping-cart-size {
+	height: 30px;
+}
+
+.top-nav-bar-position {
+	margin-left: 5%;
+	margin-right: 52%;
+}
+
+.checkout-padding {
+	padding-top: 10px;
+}
+
+.credit-card-top-spacing {
+	padding-top: 50px;
+}
+
+.float-left-placement {
+	float: left;
+	margin: 2px;
+}
+
+.float-right-placement {
+	float: right;
+	margin-right: 6%;
+}
+
+.thank-you-message-placement {
+	margin-top: 7%;
+}
+
+.spectral-font-family {
+	font-family: 'Spectral', serif;
+}
+
+.footer-spacing {
+	margin-top: 12%;
+}
+
+.receipt-icon-style {
+	margin-left: 50%;
+	height: 40px;
+}
+
+/* Playfair Font Family */
+
+.playfair-font-family {
+	font-family: 'Playfair Display', serif;
+}
+
+.nunito-font-family {
+	font-family: 'Source Serif Pro', serif;
+}

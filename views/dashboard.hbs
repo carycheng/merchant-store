@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <link rel="icon" href="../../../../favicon.ico">
+      <title>Pricing example for Bootstrap</title>
+      <!-- Bootstrap core CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <!-- Spectal Font Family -->
+      <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@300&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@300&display=swap" rel="stylesheet">
+      <!-- Custom styles for this template -->
+      <script src="https://js.stripe.com/v3/"></script>
+      <link href="/stylesheets/dashboard.css" rel="stylesheet">
+   </head>
+   <body>
+      <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+         <a class="icon-padding" href="#">
+         <img src="/images/company-icon.png" class="icon-size">
+         </a>
+         <nav class="top-nav-bar-position spectral-font-family">
+            <a class="p-2 text-dark" href="#">Features</a>
+            <a class="p-2 text-dark" href="#">Enterprise</a>
+            <a class="p-2 text-dark" href="#">Support</a>
+            <a class="p-2 text-dark" href="#">Pricing</a>
+         </nav>
+         <!-- Button trigger modal -->
+         <input type="image" data-toggle="modal" style="padding-right: 30px;" data-target="#exampleModalLong" class="shopping-cart-size" src="/images/shopping-cart.png" />
+         <input type="image" class="shopping-cart-size" src="/images/logout.png" />
+      </div>
+      {{#if message}}
+      <div class="alert alert-success flash-message-positioning" role="alert">
+         {{message}}
+      </div>
+      {{/if}}
+      <div class="dashboard-banner-box">
+         <img src="/images/dashboard-banner.jpg" class="dashboard-banner-img">
+         <h1 class='text-box'>Everything to fit your business needs</h1>
+      </div>
+      <div class="container">
+         <div class="container-fluid">
+            <div class="row">
+               {{#each products}}
+               <div class="col-md-4 d-flex justify-content-center nunito-font-family" style="padding-bottom: 40px;">
+                  <div class="card" style="width: 18rem;">
+                     <img class="card-img-top" src="{{this.metadata.imageUrl}}" alt="Card image" style="width:100%; height:180px;">
+                     <div class="card-body">
+                        <h5 class="card-title" id="product-name">{{this.name}}</h5>
+                        <p class="card-text">{{this.description}}</p>
+                        <p class="card-text" id="product-price">${{this.price}}</p>
+                        <a href="#" class="btn btn-primary" onclick="addProduct('{{this.name}}', '{{this.price}}', '{{this}}')">Add to cart</a>
+                     </div>
+                  </div>
+               </div>
+               {{/each}}
+            </div>
+         </div>
+      </div>
+      </div>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+         <div class="modal-dialog nunito-font-family" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title">Your Shopping Cart</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+               </div>
+               <div class="modal-body">
+                  <table id="product-table" class="table">
+                     <thead>
+                        <tr>
+                           <th scope="col">Item</th>
+                           <th scope="col">Price</th>
+                        </tr>
+                     </thead>
+                     <tbody></tbody>
+                  </table>
+                  <div class="float-right-placement">
+                     <div class="float-left-placement">Total: </div>
+                     <div  id="total-price" class="float-left-placement"></div>
+                  </div>
+                  <form action="/dashboard/payment", method="POST", id="payment-form" class="credit-card-top-spacing">
+                  <label for="card-element">
+                  Credit or debit card
+                  </label>
+                  <div id="card-element">
+                     <!-- A Stripe Element will be inserted here. -->
+                  </div>
+                  <div id="card-errors" role="alert"></div>
+                  <div class="form-check">
+                     <input type="checkbox" class="form-check-input" id="default-card-checkBox" name="checked", value="true">
+                     <label class="form-check-label" for="default-card-checkBox">Make Default Card</label>
+                  </div>
+                  <div class="checkout-padding  float-left-placement">
+                     <button type="submit" id="checkoutButton" class="mts btn btn-primary btn-sm" id="checkout" disabled="disabled">Checkout</button>
+                  </div>
+                  </form>
+                  <form action="/dashboard/quickpay", method="POST", id="one-click-payment-form">
+                  <div class="checkout-padding float-left-placement">
+                     <button type="button" id="quickPayButton" class="mts btn btn-primary btn-sm" disabled="disabled">Quick Pay</button>
+                  </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+      {{!-- user footer partial --}}
+      <div class="spectral-font-family">
+         {{> footer}}
+      </div>
+      <!-- Bootstrap core JavaScript
+         ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      <script>
+         /**
+          *  Initialize global total price counter. We will be using this for summation every
+          *  time an item is added to cart. At checkout we will be appending this to the checkout
+          *  form as a hidden field.
+          */
+         var totalPrice = 0;
+         
+         function addProduct(name, price, product) {
+            var newRow = document.getElementById('product-table').insertRow();
+            newRow.innerHTML = "<td>" + name + "</td><td>" + "$" + price + "</td>";
+            
+            totalPrice = totalPrice + parseInt(price);
+            var totalPriceDiv = document.getElementById('total-price');
+            totalPriceDiv.innerHTML = "<div>" + "$" + totalPrice + "</div>"
+         
+            document.getElementById('checkoutButton').removeAttribute('disabled');
+            document.getElementById('quickPayButton').removeAttribute('disabled');
+         }
+         
+         // Create a Stripe client, instance of Elements, instance of Card Element
+         var stripe = Stripe('pk_test_51HWYoNDvsNvNskCcrYjwHAaEyPN1UH37DmFonkKeFZky75EcFcKPtqkb3nGXwpAMdJaNzce5iwKozneRMa1caicU00dQtbO1T5');
+         
+         // Custom styling can be passed to options when creating an Element.
+         // (Note that this demo uses a wider set of styles than the guide below.)
+         var style = {
+         base: {
+            color: '#32325d',
+            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+            fontSmoothing: 'antialiased',
+            fontSize: '16px',
+            '::placeholder': {
+               color: '#aab7c4'
+            }
+         },
+         invalid: {
+            color: '#fa755a',
+            iconColor: '#fa755a'
+         }
+         };
+         const elements = stripe.elements();
+         const card = elements.create('card', {style: style});
+         card.mount('#card-element');
+         
+         // Handle real-time validation errors from the card Element.
+         card.on('change', function(event) {
+            var displayError = document.getElementById('card-errors');
+            if (event.error) {
+               displayError.textContent = event.error.message;
+            } else {
+               displayError.textContent = '';
+            }
+         });
+         
+         // Handle form submission.
+         var form = document.getElementById('payment-form');
+         form.addEventListener('submit', function(event) {
+            event.preventDefault();
+         
+            stripe.createToken(card).then(function(result) {
+               if (result.error) {
+                  // Inform the user if there was an error.
+                  var errorElement = document.getElementById('card-errors');
+                  errorElement.textContent = result.error.message;
+               } else {
+                  console.log(result);
+                  // Send the token to your server.
+                  stripeTokenHandler(result.token);
+               }
+            });
+         });
+         
+         // Helper function to handle attaching total price as a hidden input to the
+         // new card payment process.
+         function totalPriceHandler() {
+            var regularCheckoutForm = document.getElementById('payment-form');
+            var regularCheckoutInput = document.createElement('input');
+            regularCheckoutInput.setAttribute('type', 'hidden');
+            regularCheckoutInput.setAttribute('name', 'totalPrice');
+            regularCheckoutInput.setAttribute('value', totalPrice);
+            regularCheckoutForm.appendChild(regularCheckoutInput);
+         }
+         
+         // Submit the form with the token ID.
+         function stripeTokenHandler(token) {
+            console.log(token);
+            // Insert the token ID into the form so it gets submitted to the server
+            var form = document.getElementById('payment-form');
+            var hiddenInput = document.createElement('input');
+            hiddenInput.setAttribute('type', 'hidden');
+            hiddenInput.setAttribute('name', 'stripeToken');
+            hiddenInput.setAttribute('value', token.id);
+            form.appendChild(hiddenInput);
+         
+            totalPriceHandler();
+         
+            // Submit the form
+            form.submit();
+         }
+         
+         // Helper function to handle attaching total price as a hidden input to the
+         // existing default card payment process.
+         function oneClickTotalPriceHandler() {
+            var oneClickPayForm = document.getElementById('one-click-payment-form');
+            var oneClickInput = document.createElement('input');
+            oneClickInput.setAttribute('type', 'hidden');
+            oneClickInput.setAttribute('name', 'totalPrice');
+            oneClickInput.setAttribute('value', totalPrice);
+            oneClickPayForm.appendChild(oneClickInput);
+         }  
+         
+         // Listen for events on one click payment form and handle form attachments.
+         // Finaly submit the payment form when done.
+         var oneClickPaymentForm = document.getElementById('one-click-payment-form');
+         oneClickPaymentForm.addEventListener('click', function(event) {
+            oneClickTotalPriceHandler();
+            oneClickPaymentForm.submit();
+         });
+      </script>
+   </body>
+</html>
