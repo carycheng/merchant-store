@@ -11,6 +11,7 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       <!-- Spectal Font Family -->
       <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@300&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@300&display=swap" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500&display=swap" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
       <!-- Custom styles for this template -->
@@ -45,7 +46,7 @@
          <div class="container-fluid">
             <div class="row">
                {{#each products}}
-               <div class="col-md-4 d-flex justify-content-center volkorn-font-family" style="padding-bottom: 40px;">
+               <div class="col-md-4 d-flex justify-content-center cormorant-font-family" style="padding-bottom: 40px;">
                   <div class="card" style="width: 18rem;">
                      <img class="card-img-top" src="{{this.metadata.imageUrl}}" alt="Card image" style="width:100%; height:180px;">
                      <div class="card-body">
@@ -82,7 +83,7 @@
                      <tbody></tbody>
                   </table>
                   <div class="float-right-placement">
-                     <div class="float-left-placement">Total: </div>
+                     <div class="float-left-placement">Total Cost: </div>
                      <div  id="total-price" class="float-left-placement"></div>
                   </div>
                   <form action="/dashboard/payment", method="POST", id="payment-form" class="credit-card-top-spacing">

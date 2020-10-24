@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 router.get('/', function(req, res, next) {
   res.render('index', { 
     title: 'Express',
-    message: req.flash('invalidAction')
   });
 });
 

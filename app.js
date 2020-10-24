@@ -10,18 +10,24 @@ var passport = require('passport');
 var hbs = require("hbs");
 require('dotenv').config()
 
+// Set up connection to local mongoDB.
+mongoose.connect(process.env.mongoHost, () => {
+  console.log('Connection to MongoDB succeeded');
+});
+
 // Set up routes to be used in Merchant App
 var indexRouter = require('./routes/index');
 var authRouter = require('./routes/auth');
 var dashboardRouter = require('./routes/dashboard');
-var usersRouter = require('./routes/users');
+var confirmationRouter = require('./routes/confirmation');
+const { resolveSoa } = require('dns');
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-bs.registerPartials(__dirname + "/views/partials");
+hbs.registerPartials(__dirname + "/views/partials");
 
 // Initialize session middleware
 app.use(session({
@@ -54,11 +60,12 @@ function ensureAuthenticated(req, res, next) {
 }
 
 // Passing passport object into the passport service we are using
-require('./config/passport')(passport);
+require('./middlewares/passport')(passport);
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/dashboard', ensureAuthenticated, dashboardRouter);
+app.use('/confirmation', confirmationRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
