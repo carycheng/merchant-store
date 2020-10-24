@@ -2,8 +2,7 @@
  * The CSS shown here will not be introduced in the Quickstart guide, but shows
  * how you can use CSS to style your Element's container.
  */
-
- .StripeElement {
+.StripeElement {
 	box-sizing: border-box;
 	height: 40px;
 	padding: 10px 12px;
@@ -112,12 +111,17 @@
 	height: 40px;
 }
 
-/* Playfair Font Family */
+.default-card-placement {
+	margin-left: 1%;
+	margin-top: 2%;
+}
 
+/* Playfair Font Family */
 .playfair-font-family {
 	font-family: 'Playfair Display', serif;
 }
 
-.nunito-font-family {
-	font-family: 'Source Serif Pro', serif;
+/* Source Sans Pro Font Family */
+.open-sans-font-family {
+	font-family: 'Source Sans Pro', sans-serif;
 }

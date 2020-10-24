@@ -11,7 +11,8 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       <!-- Spectal Font Family -->
       <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@300&display=swap" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@300&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
       <!-- Custom styles for this template -->
       <script src="https://js.stripe.com/v3/"></script>
       <link href="/stylesheets/dashboard.css" rel="stylesheet">
@@ -44,14 +45,14 @@
          <div class="container-fluid">
             <div class="row">
                {{#each products}}
-               <div class="col-md-4 d-flex justify-content-center nunito-font-family" style="padding-bottom: 40px;">
+               <div class="col-md-4 d-flex justify-content-center volkorn-font-family" style="padding-bottom: 40px;">
                   <div class="card" style="width: 18rem;">
                      <img class="card-img-top" src="{{this.metadata.imageUrl}}" alt="Card image" style="width:100%; height:180px;">
                      <div class="card-body">
                         <h5 class="card-title" id="product-name">{{this.name}}</h5>
                         <p class="card-text">{{this.description}}</p>
-                        <p class="card-text" id="product-price">${{this.price}}</p>
-                        <a href="#" class="btn btn-primary" onclick="addProduct('{{this.name}}', '{{this.price}}', '{{this}}')">Add to cart</a>
+                        <p class="card-text" id="product-price" style="font-size: 25px;">${{this.price}}</p>
+                        <a href="#" class="btn btn-primary open-sans-font-family" onclick="addProduct('{{this.name}}', '{{this.price}}', '{{this}}')">Add to cart</a>
                      </div>
                   </div>
                </div>
@@ -62,7 +63,7 @@
       </div>
       <!-- Modal -->
       <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-         <div class="modal-dialog nunito-font-family" role="document">
+         <div class="modal-dialog open-sans-font-family" role="document">
             <div class="modal-content">
                <div class="modal-header">
                   <h5 class="modal-title">Your Shopping Cart</h5>
@@ -92,7 +93,7 @@
                      <!-- A Stripe Element will be inserted here. -->
                   </div>
                   <div id="card-errors" role="alert"></div>
-                  <div class="form-check">
+                  <div class="form-check default-card-placement">
                      <input type="checkbox" class="form-check-input" id="default-card-checkBox" name="checked", value="true">
                      <label class="form-check-label" for="default-card-checkBox">Make Default Card</label>
                   </div>

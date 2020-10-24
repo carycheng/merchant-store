@@ -10,7 +10,6 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       <!-- Playfair Font and Lato -->
       <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300&display=swap" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&family=Spectral:wght@300&display=swap" rel="stylesheet">
       <!-- Custom styles for this template -->
       <link href="/stylesheets/front-page.css" rel="stylesheet">
@@ -81,7 +80,7 @@
                         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                            <small class="form-text text-muted welcome-message-style">New around here? Why not sign up!</small>
                            <form action="/auth/register", method="POST", id="payment-form">
-                           <label class="mts" for="card-element">Enter Credit Card Information</label>
+                           <label class="mts" for="card-element">A few things to get us started</label>
                            <div class="form-group">
                               <input type="email" class="form-control rounded-corners" name="email" id="signUpEmail" aria-describedby="emailHelp" placeholder="enter email">
                               <small id="emailHelp" class="form-text text-muted email-warning-message">We'll never share your email with anyone else.</small>
@@ -90,7 +89,7 @@
                               <input type="password" class="form-control rounded-corners" name="password" id="signUpPassword" placeholder="enter password">
                            </div>
                            <div class="form-group">
-                              <input type="tel" class="form-control rounded-corners" name="telephone" id="signUpPhone" placeholder="enter phone number">
+                              <input type="tel" class="form-control rounded-corners" name="telephone" id="signUpPhone" placeholder="enter phone number (6501234567)">
                            </div>
                            <label for="card-element">
                            Credit or debit card
@@ -112,7 +111,9 @@
          </div>
       </div>
       {{!-- User footer partial --}}
-      {{> footer}}
+      <div class="spectral-font-family">
+         {{> footer}}
+      </div>
       <!-- Bootstrap core JavaScript
          ================================================== -->
       <!-- Placed at the end of the document so the pages load faster -->
