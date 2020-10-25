@@ -111,6 +111,20 @@ router.post('/payment', async function(req, res, next){
     res.redirect('/confirmation');
 });
 
+/* Route to hande logging out the user and destroying its session */
+router.post('/logout', function(req, res) {
+    req.isAuthenticated = false;
+    req.session.destroy(function(err){  
+        if(err){  
+            console.log(err);  
+        }  
+        else  
+        {  
+            res.redirect('/');  
+        }  
+    }); 
+});
+
 /* GET dashboard page. */
 router.get('/', async function(req, res, next) {
     try {

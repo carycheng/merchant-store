@@ -28,7 +28,9 @@
          </nav>
          <!-- Button trigger modal -->
          <input type="image" data-toggle="modal" style="padding-right: 30px;" data-target="#exampleModalLong" class="shopping-cart-size" src="/images/shopping-cart.png" />
-         <input type="image" class="shopping-cart-size" src="/images/logout.png" />
+         <form action="/dashboard/logout", method="POST">
+            <input type="image" class="shopping-cart-size" src="/images/logout.png" />
+         </form>
       </div>
       {{#if message}}
       <div class="alert alert-success flash-message-positioning" role="alert">
