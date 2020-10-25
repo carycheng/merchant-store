@@ -34,17 +34,20 @@ There are a few steps that are required for set up in order to get this applicat
 
 ### Prerequisites
 
- - [ ] NPM Set up
-This project uses npm as the package manager.  If you do not have npm you can install by following this link [here](https://www.npmjs.com/get-npm).
+ - [ ] NPM
+
+- This project uses npm as the package manager.  If you do not have npm you can install by following this link [here](https://www.npmjs.com/get-npm).
  - [ ] Node.js
-We rely on node to run our application as well as our set up script. For information on installation please refer to this link [here](https://nodejs.org/en/download/).
+
+- We rely on node to run our application as well as our set up script. For information on installation please refer to this link [here](https://nodejs.org/en/download/).
  - [ ] MongoDB
 
-NOTE: The install MongoDB link in the install guide below is not correct, when downloading please refer to this link [here](https://www.mongodb.com/try/download/community). The rest of the guide is really helpful.
+- NOTE: The install MongoDB link in the install guide below is not correct, when downloading please refer to this link [here](https://www.mongodb.com/try/download/community). The rest of the guide is really helpful.
 
-This application uses MongoDB to store customer information as well as the Stripe Customer ID associated with each customer. Thankfully, it's pretty easy to set up. Please follow the set up steps [here](https://treehouse.github.io/installation-guides/mac/mongo-mac.html). I used the  ``Install and Run MongoDB by Downloading it Manually`` section and found it really helpful.
+- This application uses MongoDB to store customer information as well as the Stripe Customer ID associated with each customer. Thankfully, it's pretty easy to set up. Please follow the set up steps [here](https://treehouse.github.io/installation-guides/mac/mongo-mac.html). I used the  ``Install and Run MongoDB by Downloading it Manually`` section and found it really helpful.
  - [ ] Stripe API Key
-Lastly, please be sure to have your Stripe API Test Key Token on hand!
+
+- Lastly, please be sure to have your Stripe API Test Key Token on hand!
 
 ### Installation
 
