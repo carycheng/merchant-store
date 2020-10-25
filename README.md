@@ -81,7 +81,7 @@ TWILIO_AUTH_TOKEN = 'TWILIO_AUTH_TOKEN' (please use the one included in the note
 ```
 TWILIO_MAIN_NUMBER = 'TWILIO_MAIN_NUMBER' (please use the one included in the note)
 ```
-Please feel free to use the default `MONGOHOST`specified
+- Please feel free to use the default `MONGOHOST`specified
 
 4. Please navigate to the `setup` directory and run the `setup.js` script with the following command:
 `$ node setup.js`
