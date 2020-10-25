@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 require("dotenv").config();
-const stripe = require('stripe')('sk_test_51HWYoNDvsNvNskCcLPsV3eVg3MqT0aBjzgmgZZBf84Li6MMagfJUMFkoux5GqdWEhENJJzkazi8YmGIYF3H6cTEp00nEKYcK9C');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 /**
  * Route for one click payment. This payment method uses the default
@@ -141,7 +141,8 @@ router.get('/', async function(req, res, next) {
 
         res.render('dashboard', { 
             title: 'Express',
-            products: productsToDisplay
+            products: productsToDisplay,
+            stripePK: process.env.STRIPE_PUBLISHABLE_KEY
         });
     } catch(e) {
         console.log(e, 'Was not able to retrieve information for dashboard');

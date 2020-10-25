@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 require("dotenv").config();
-const stripe = require('stripe')('sk_test_51HWYoNDvsNvNskCcLPsV3eVg3MqT0aBjzgmgZZBf84Li6MMagfJUMFkoux5GqdWEhENJJzkazi8YmGIYF3H6cTEp00nEKYcK9C');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const twilioClient = require('twilio')(process.env.TWILIO_SID, process.env.TWILIO_AUTH_TOKEN);
 
 // GET route for confirmation page handling all purchase confirmation logic

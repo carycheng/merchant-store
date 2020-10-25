@@ -45,13 +45,13 @@ There are a few steps that are required for set up in order to get this applicat
 
 **MongoDB**
 
-- NOTE: The install MongoDB link in the install guide below is not correct, when downloading please refer to this link [here](https://www.mongodb.com/try/download/community). The rest of the guide is really helpful.
+- NOTE: The install MongoDB link in the install guide below is not correct, when downloading please refer to this link [here](https://www.mongodb.com/try/download/community). The rest of the guide is really helpful however.
 
 - This application uses MongoDB to store customer information as well as the Stripe Customer ID associated with each customer. Thankfully, it's pretty easy to set up. Please follow the set up steps [here](https://treehouse.github.io/installation-guides/mac/mongo-mac.html). I used the  ``Install and Run MongoDB by Downloading it Manually`` section and found it really helpful.
  
-**Stripe API Key**
+**Stripe API Keys**
 
-- Lastly, please be sure to have your Stripe API Test Key Token on hand!
+- Lastly, please be sure to have both your publishable test key and secret test key on hand!
 
 ### Installation
 
@@ -65,15 +65,23 @@ npm install
 ```
 3.  The following steps are for setting up your .env file
 
-- Rename the `env.sample` file to `.env` and configure your constants
+- Rename the `.env.example` file to `.env` and configure your constants
 ```
-STRIPE_TEST_KEY = 'YOUR_STRIPE_API_TEST_KEY_TOKEN' (sk_test)
+STRIPE_SECRET_KEY = 'YOUR_STRIPE_API_SECRET_KEY_TOKEN' (sk_test)
 ```
-
-- For the mongoHost field, running it locally should have the format:
-`mongodb://localhost/<what_you_want_to_call_your_local_db>`
-However, if you have no strong preference it is perfectly fine defaulting the current naming of the db `mongodb://localhost/merchant-app`
-- It's definitely not great practice to leave account tokens in your .env and publish it to Github but I really wanted a way to show off the integration with Twilio without having the user go through the hassle of setting this up. Please use the configurations I have provided here and rest assured knowing that this isn't something I would usually do!
+```
+STRIPE_PUBLISHABLE_KEY = 'YOUR_STRIPE_API_PUBLISHABLE_KEY_TOKEN' (pk_test)
+```
+```
+TWILIO_SID = 'TWILIO_SID' (please use the one included in the note)
+```
+```
+TWILIO_AUTH_TOKEN = 'TWILIO_AUTH_TOKEN' (please use the one included in the note)
+```
+```
+TWILIO_MAIN_NUMBER = 'TWILIO_MAIN_NUMBER' (please use the one included in the note)
+```
+Please feel free to use the default `MONGOHOST`specified
 
 4. Please navigate to the `setup` directory and run the `setup.js` script with the following command:
 `$ node setup.js`

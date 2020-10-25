@@ -3,7 +3,7 @@ var router = express.Router();
 require("dotenv").config();
 
 // Set up connection to the Stripe API through the SDK
-const stripe = require('stripe')(process.env.STRIPE_TEST_KEY);
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 // Set up mongoose connection and reference to User Model
 const mongoose = require('mongoose');
@@ -11,7 +11,7 @@ const User = require('../models/User');
 const passport = require('passport');
 
 // Create connection to local db called merchant-app
-mongoose.connect('mongodb://localhost/merchant-app', () => {
+mongoose.connect(process.env.MONGOHOST, () => {
   console.log('Connection to MongoDB succeeded');
 });
 
