@@ -89,7 +89,7 @@ Once that is complete you will notice that in the `Products` section of your Str
 5. **Note: Please do the following in a separate terminal window**
 We need to start up our local database in order to store our users created by this application. You should have MongoDB downloaded and set up by this step, if you have not please refer to the `MongoDB` step in the `Prerequisites` section above. You can start MongoDB server by executing the `mongod` file. Depending on where you are keeping your `mongodb` file the path might be different. For example, I keep my `mongodb`file on my desktop so I use the following command to start my MongoDB server: `~/Desktop/mongodb/bin/mongod`. Alternatively, if you find the `mongodb` folder you downloaded earlier, you can just click into it go to` bin` -> `mongod` and double click on `mongod` and that should start the Mongo Server as well.
 6. Thank you for braving that journey! We are all set up, please use the below to kick off the app: 
-`npm start app.js`
+`npm start app.js` and navigate to `localhost:3000`.
 
 If you run into any issues during this set up please do not hesitate to reach out to me. Alternatively, if there are things that can be improved or clarified in the above guide please let me know!
 
