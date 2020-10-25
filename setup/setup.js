@@ -57,7 +57,6 @@ const products = [
  * Note: Stripe attaches boolean value as String when inserting as a metadata value.
  */
 async function setup() {
-    console.log(process.env.STRIPE_SECRET_KEY);
     for (const product of products) {
         const createdProduct = await stripe.products.create({
             name: product.name,
