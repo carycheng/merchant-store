@@ -19,21 +19,21 @@ const products = [
     },
     {
         name: "Set of 20 Soft Bound Notebooks",
-        description: "Notebooks to help keep your ideas safe",
+        description: "Set of 20 softbound notebooks to help keep your ideas safe.",
         imageUrl: "https://i.pinimg.com/originals/fd/5b/b5/fd5bb5120414b6cb89a84bb9c4249a35.jpg",
         price: 1800,
         testProduct: true
     },
     {
-        name: "Personal Coaching with Dynamic Draymond",
-        description: "Get your weekly pump up with Draymond Green",
+        name: "Medium Point 1.0 mm Pens (20 pens)",
+        description: "Flexible round barrel round barrel design for comfortable writing.",
         imageUrl: "https://cdn.trendhunterstatic.com/thumbs/metal-ballpoint-pen.jpeg",
         price: 2300,
         testProduct: true
     },
     {
-        name: "Meditating with Klay Thompson",
-        description: "Finding your inner peace with zen master Klay and his dog Rocco",
+        name: "Wireless Mobile Mouse",
+        description: "Ultra slim and lightweight with battery life up 6 months. Blutetooth 4.0 enabled.",
         imageUrl: "https://mspoweruser.com/wp-content/uploads/2020/05/Surface-Mobile-Mouse.jpg",
         price: 1100,
         testProduct: true

@@ -8,7 +8,7 @@ require("dotenv").config();
 router.get('/', function(req, res, next) {
 
   console.log(process.env.STRIPE_PUBLISHABLE_KEY);
-  res.render('index', { 
+  res.render('home', { 
     title: 'Merchant App',
     stripePK: process.env.STRIPE_PUBLISHABLE_KEY
   });

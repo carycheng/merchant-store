@@ -16,7 +16,7 @@ mongoose.connect(process.env.mongoHost, () => {
 });
 
 // Set up routes to be used in Merchant App
-var indexRouter = require('./routes/index');
+var homeRouter = require('./routes/home');
 var authRouter = require('./routes/auth');
 var dashboardRouter = require('./routes/dashboard');
 var confirmationRouter = require('./routes/confirmation');
@@ -62,10 +62,10 @@ function ensureAuthenticated(req, res, next) {
 // Passing passport object into the passport service we are using
 require('./middlewares/passport')(passport);
 
-app.use('/', indexRouter);
+app.use('/', homeRouter);
 app.use('/auth', authRouter);
 app.use('/dashboard', ensureAuthenticated, dashboardRouter);
-app.use('/confirmation', confirmationRouter);
+app.use('/confirmation', ensureAuthenticated, confirmationRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
