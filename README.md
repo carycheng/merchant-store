@@ -6,6 +6,7 @@
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
+* [Overview](#overview)
 
 ## Stripe E-Commerce Application
 
@@ -34,18 +35,21 @@ There are a few steps that are required for set up in order to get this applicat
 
 ### Prerequisites
 
- - [ ] NPM
+**NPM**
 
 - This project uses npm as the package manager.  If you do not have npm you can install by following this link [here](https://www.npmjs.com/get-npm).
- - [ ] Node.js
+
+**Node.js**
 
 - We rely on node to run our application as well as our set up script. For information on installation please refer to this link [here](https://nodejs.org/en/download/).
- - [ ] MongoDB
+
+**MongoDB**
 
 - NOTE: The install MongoDB link in the install guide below is not correct, when downloading please refer to this link [here](https://www.mongodb.com/try/download/community). The rest of the guide is really helpful.
 
 - This application uses MongoDB to store customer information as well as the Stripe Customer ID associated with each customer. Thankfully, it's pretty easy to set up. Please follow the set up steps [here](https://treehouse.github.io/installation-guides/mac/mongo-mac.html). I used the  ``Install and Run MongoDB by Downloading it Manually`` section and found it really helpful.
- - [ ] Stripe API Key
+ 
+**Stripe API Key**
 
 - Lastly, please be sure to have your Stripe API Test Key Token on hand!
 
@@ -79,3 +83,19 @@ Once that is complete you will notice that in the `Products` section of your Str
 `npm start app.js`
 
 If you run into any issues during this set up please do not hesitate to reach out to me. Alternatively, if there are things that can be improved or clarified in the above guide please let me know!
+
+<!-- Overview -->
+## Overview
+Below is a quick overview of each page and what its purpose
+
+- Registration page allows new user to create new user/Stripe Customer and save default card. Alternatively a user can login here
+![Imgur](https://i.imgur.com/TMpiDix.png)
+
+- Dashboard page retrieves products and prices from Stripe and displays them for the user to add to their cart.
+![Imgur](https://i.imgur.com/z2HBcyG.png)
+
+- Shopping cart allows the user to purchase the products that they have selected. This sends a request to Stripe to charge either the default card for the customer or a new card. 
+![Imgur](https://i.imgur.com/tWimujq.png)
+
+- The payment confirmation page displays the total amount charged and the Charge ID associated with the payment. The icon allows the customer to view their receipt. The user will also receive the receipt in an SMS.
+![Imgur](https://i.imgur.com/78WORc5.png)
